@@ -1,0 +1,71 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x55d54d405cf0 .scope module, "labK" "labK" 2 1;
+ .timescale 0 0;
+L_0x55d54d454fe0 .functor XOR 1, v0x55d54d4548d0_0, v0x55d54d454830_0, C4<0>, C4<0>;
+L_0x55d54d455070 .functor BUFZ 1, L_0x55d54d454fe0, C4<0>, C4<0>, C4<0>;
+L_0x55d54d4550e0 .functor XOR 1, L_0x55d54d455070, L_0x55d54d455300, L_0x55d54d455560, C4<0>;
+L_0x55d54d455200 .functor AND 1, L_0x55d54d455070, v0x55d54d405e80_0, C4<1>, C4<1>;
+L_0x55d54d455300 .functor BUFZ 1, L_0x55d54d455200, C4<0>, C4<0>, C4<0>;
+L_0x55d54d455410 .functor AND 1, v0x55d54d4548d0_0, v0x55d54d454830_0, C4<1>, C4<1>;
+L_0x55d54d455560 .functor BUFZ 1, L_0x55d54d455410, C4<0>, C4<0>, C4<0>;
+L_0x55d54d455670 .functor OR 1, L_0x55d54d455300, L_0x55d54d455560, C4<0>, C4<0>;
+v0x55d54d405e80_0 .var "Cin", 0 0;
+v0x55d54d454770_0 .net "Cout", 0 0, L_0x55d54d455670;  1 drivers
+v0x55d54d454830_0 .var "a", 0 0;
+v0x55d54d4548d0_0 .var "b", 0 0;
+v0x55d54d454990_0 .var "flag", 0 0;
+v0x55d54d454aa0_0 .net "orInput1", 0 0, L_0x55d54d455300;  1 drivers
+v0x55d54d454b60_0 .net "orInput2", 0 0, L_0x55d54d455560;  1 drivers
+v0x55d54d454c20_0 .net "r", 0 0, L_0x55d54d454fe0;  1 drivers
+v0x55d54d454ce0_0 .net "s", 0 0, L_0x55d54d455410;  1 drivers
+v0x55d54d454da0_0 .net "t", 0 0, L_0x55d54d455200;  1 drivers
+v0x55d54d454e60_0 .net "xorAndIn", 0 0, L_0x55d54d455070;  1 drivers
+v0x55d54d454f20_0 .net "z", 0 0, L_0x55d54d4550e0;  1 drivers
+    .scope S_0x55d54d405cf0;
+T_0 ;
+    %delay 15, 0;
+    %vpi_func 2 31 "$value$plusargs" 32, "a=%b", v0x55d54d454830_0 {0 0 0};
+    %pad/s 1;
+    %store/vec4 v0x55d54d454990_0, 0, 1;
+    %load/vec4 v0x55d54d454990_0;
+    %pad/u 32;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_0.0, 4;
+    %vpi_call 2 32 "$display", "Error +a not specified" {0 0 0};
+T_0.0 ;
+    %vpi_func 2 33 "$value$plusargs" 32, "b=%b", v0x55d54d4548d0_0 {0 0 0};
+    %pad/s 1;
+    %store/vec4 v0x55d54d454990_0, 0, 1;
+    %load/vec4 v0x55d54d454990_0;
+    %pad/u 32;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_0.2, 4;
+    %vpi_call 2 34 "$display", "Error +b not specified" {0 0 0};
+T_0.2 ;
+    %vpi_func 2 35 "$value$plusargs" 32, "Cin=%b", v0x55d54d405e80_0 {0 0 0};
+    %pad/s 1;
+    %store/vec4 v0x55d54d454990_0, 0, 1;
+    %load/vec4 v0x55d54d454990_0;
+    %pad/u 32;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_0.4, 4;
+    %vpi_call 2 36 "$display", "Error +Cin not specified" {0 0 0};
+T_0.4 ;
+    %delay 25, 0;
+    %delay 1, 0;
+    %vpi_call 2 38 "$display", "a=%d b=%d Cin=%d z=%d Cout=%d ", v0x55d54d454830_0, v0x55d54d4548d0_0, v0x55d54d405e80_0, v0x55d54d454f20_0, v0x55d54d454770_0 {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Labk9.v";
